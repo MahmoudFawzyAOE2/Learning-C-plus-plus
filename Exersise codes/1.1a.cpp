@@ -1,7 +1,7 @@
 #include <iostream>
 using namespace std;
 
-
+/*member functions*/
 
 class complex_num
 {
@@ -116,12 +116,8 @@ int main()
     cout << "\n----------------"  << endl ;
     cout << "-set num3 to num2 / num1"  << endl ;
     num3.divide(num2, num1);
-    print_complex(num3);
+    num3.print();
 
     return 0;
 }
 
-void print_complex(complex_num num)
-{
-    cout << "\nComplex Number = " << num.get_real() << "+i" << num.get_imag() << endl ;
-}

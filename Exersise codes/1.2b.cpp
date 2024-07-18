@@ -1,8 +1,6 @@
 #include <iostream>
 using namespace std;
 
-
-
 class point
 {
     private:
@@ -34,63 +32,42 @@ class point
             {
                 return(py);
             };
-        print()
-            {
-               cout << "\nPoint = ( " << px << " , " << py << " )" << endl ;
-            }
-        point add(point a, point b= point(0,0))
-            {
-                this->px = a.px + b.px;
-                this->py = a.py + b.py;
-            };
-
-        /*2 subtract method using the same name with different input attributes (overloading)*/
-        point sub(point a) // this = this - a
-            {
-                this->px -= a.px ;
-                this->py -= a.py ;
-            };
-        point sub(point a, point b) // this = a - b
-            {
-                this->px = a.px - b.px;
-                this->py = a.py - b.py;
-            };
 };
 
 void print_point(point point);
+point add(point a, point b); // temp = a + b
+point sub(point a, point b); // temp = a - b
 
 int main()
 {
     /*set , get & print methods*/
     point point1 ;
 
-    point1.print();
+    print_point(point1);
 
     point1.set_px(2);
     point1.set_py(3);
 
-    point1.print();
+    print_point(point1);
 
-    /*add*/
-    cout << "\n----------------"  << endl ;
+
     point point2 (4,5) ;
 
     point point3 ;
-    point3.add(point1);
-    point3.print();
+
+    point1.set_point(2,3);
+    point2.set_point(4,5);
+
+    /*add*/
+    cout << "\n----------------"  << endl ;
+    cout << "\n-set point3 to point2 + point1"  << endl ;
+    point3=add(point2, point1);
+    print_point(point3);
 
     /*sub*/
     cout << "\n----------------"  << endl ;
-    point1.set_point(2,3);
-    point2.set_point(4,5);
-    point3.set_point(6,7);
-
-    cout << "-subtract point1 from point3"  << endl ;
-    point3.sub(point1);
-    point3.print();
-
     cout << "\n-set point3 to point2 - point1"  << endl ;
-    point3.sub(point2, point1);
+    point3=sub(point2, point1);
     print_point(point3);
 
     return 0;
@@ -101,3 +78,19 @@ void print_point(point point)
     cout << "\nPoint = ( " << point.get_px() << " , " << point.get_py() << " )" << endl ;
 
 }
+
+point add(point a, point b) // temp = a + b
+{
+    point temp ;
+    temp.set_px(a.get_px() + b.get_px()) ;
+    temp.set_py(a.get_py() + b.get_py());
+    return temp;
+};
+
+point sub(point a, point b) // temp = a - b
+{
+    point temp ;
+    temp.set_px(a.get_px() - b.get_px() );
+    temp.set_py(a.get_py() - b.get_py() );
+    return temp;
+};
